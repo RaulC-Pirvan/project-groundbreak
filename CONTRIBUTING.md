@@ -2,28 +2,82 @@
 
 ## Purpose
 
-This repository uses a disciplined workflow to keep development traceable, testable, and easy to review.
+This repository uses a strict, review-first workflow so changes stay traceable, testable, and dissertation-ready.
 
-## Branching Model
+## Branching Strategy
+
+Long-lived branches:
 
 - `master`: protected release branch
-- `dev`: phase integration branch
+- `dev`: protected phase integration branch
+
+Working branches:
+
 - `sprint-*`: short-lived sprint/task branches created from `dev`
 
-### Required Flow
+Recommended sprint branch format:
 
-1. Create branch from `dev` (example: `sprint-0.0-task-7`).
-2. Implement changes in that branch.
-3. Open PR into `dev`.
+- `sprint-<phase>.<sprint>-<short-topic>`
+- Example: `sprint-0.0-contributing-guide`
+
+Optional branch intent prefixes for scoped work:
+
+- `feat/<topic>` for new functionality
+- `fix/<topic>` for bug fixes
+- `chore/<topic>` for tooling/maintenance
+- `docs/<topic>` for documentation-only changes
+
+## Required Merge Flow
+
+1. Branch from `dev`.
+2. Implement and commit changes.
+3. Open PR from your branch into `dev`.
 4. Merge only after required checks pass.
-5. At phase completion, open PR from `dev` to `master`.
+5. At phase completion, open PR from `dev` into `master`.
 
 Direct pushes to `master` are not allowed.
-Direct pushes to `dev` are strongly discouraged; use PR flow.
+Direct pushes to `dev` are not allowed; use PRs.
 
-## Milestone Naming Convention
+## Pull Request Requirements
 
-Use this format:
+Every PR must include:
+
+- clear summary of what changed
+- linked issue(s) (`Closes #<issue-number>` where applicable)
+- testing evidence (unit/integration/e2e or explicit N/A reason)
+- documentation impact (`updated` or `not needed` with reason)
+- security impact (`none` or short description)
+- risk/rollback notes for non-trivial changes
+
+PR template at `.github/pull_request_template.md` is mandatory.
+
+## Required CI Gates
+
+Protected-branch merges require passing CI checks.
+
+Baseline required checks:
+
+- `lint`
+- `typecheck`
+- `unit tests`
+- `build`
+- `e2e smoke tests`
+
+If a check is temporarily unavailable, document the exception in the PR and restore the check quickly.
+
+## Issue, Labels, and Milestones
+
+Each issue should map to one concrete task.
+
+Each issue should have:
+
+- one `type:*` label
+- one `priority:*` label
+- one `area:*` label
+- one `risk:*` label
+- one milestone assignment
+
+Milestone naming convention:
 
 `P<phase>-S<sprint> <short name>`
 
@@ -39,31 +93,9 @@ Each milestone must include:
 - one-sentence goal
 - linked issues
 
-## Issue and PR Workflow
-
-- Each issue should map to one concrete task.
-- Every issue should have labels:
-  - one `type:*`
-  - one `priority:*`
-  - one `area:*`
-  - one `risk:*`
-- Every issue should be assigned to a milestone.
-- PR descriptions must use the PR template.
-- Use `Closes #<issue-number>` in PR description when appropriate.
-
-## Closing Issues
-
-Close an issue only when:
-
-- implementation is complete
-- changes are merged to target branch
-- docs/tests are updated if applicable
-
-Creating an issue does not mean it is done.
-
 ## Commit Message Convention
 
-Use Conventional Commit style when possible:
+Use Conventional Commits:
 
 - `feat: ...`
 - `fix: ...`
@@ -72,6 +104,36 @@ Use Conventional Commit style when possible:
 - `refactor: ...`
 - `test: ...`
 
-Example:
+Examples:
 
-`chore(repo): add milestone naming convention to contributing guide`
+- `docs: add contributing workflow and CI gate policy`
+- `chore(repo): add issue templates`
+- `feat(api): add feed endpoint contract`
+
+## Documentation Update Requirement
+
+Meaningful changes must update docs in the same PR.
+
+At minimum, review and update relevant files from:
+
+- `README.md`
+- `docs/roadmap.md`
+- `docs/backend.md`
+- `docs/mobile.md`
+- `docs/ml-pipeline.md`
+- `docs/fact-checking.md`
+- `docs/security.md`
+- `docs/evaluation.md`
+- `docs/dissertation-notes/`
+
+If no doc update is needed, state the reason in the PR.
+
+## Closing Issues
+
+Close an issue only when:
+
+- implementation is complete
+- PR is merged to the target branch
+- tests/docs obligations are met
+
+Creating an issue does not mean it is done.

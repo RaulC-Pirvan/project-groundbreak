@@ -307,7 +307,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
+- [x] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
 
 Step-by-step:
 
