@@ -30,12 +30,12 @@
 
 ### Sprint 0.0: GitHub & Repository Governance
 
-- [ ] Create GitHub repository and set default branch (`main`)
+- [ ] Create GitHub repository and set default branch (`master`)
 - [ ] Define branching strategy:
   - [ ] short-lived feature branches
-  - [ ] pull-request-only merges to `main`
-  - [ ] no direct pushes to `main`
-- [ ] Enable branch protection for `main`:
+  - [ ] pull-request-only merges to `master`
+  - [ ] no direct pushes to `master`
+- [ ] Enable branch protection for `master`:
   - [ ] require PR review
   - [ ] require passing CI checks
   - [ ] block force-push and branch deletion
@@ -112,7 +112,7 @@
 - [ ] Add dependency vulnerability checks (`npm audit` baseline policy)
 - [ ] Add secret scanning baseline in CI
 - [ ] Add container image vulnerability scan baseline (for Docker images)
-- [ ] Define branch protection policy for main branch
+- [ ] Define branch protection policy for master branch
 - [ ] Add release tagging/versioning policy notes
 
 ---
@@ -441,3 +441,4 @@
 - Security/privacy controls are part of the core architecture, not post-hoc.
 - Scope discipline wins over overengineering.
 - Every meaningful implementation includes tests and documentation in the same cycle.
+
