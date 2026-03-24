@@ -276,12 +276,12 @@ Done when:
 
 Checklist:
 
-- [ ] Create `README.md` baseline:
-  - [ ] project purpose
-  - [ ] architecture summary
-  - [ ] local setup
-  - [ ] scripts and workflows
-  - [ ] contribution workflow
+- [x] Create `README.md` baseline:
+  - [x] project purpose
+  - [x] architecture summary
+  - [x] local setup
+  - [x] scripts and workflows
+  - [x] contribution workflow
 
 Step-by-step:
 
