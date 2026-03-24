@@ -252,7 +252,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add milestone naming convention aligned with roadmap phases
+- [x] Add milestone naming convention aligned with roadmap phases
 
 Step-by-step:
 
