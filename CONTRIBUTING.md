@@ -137,3 +137,16 @@ Close an issue only when:
 - tests/docs obligations are met
 
 Creating an issue does not mean it is done.
+
+## Changelog and Release Notes Policy
+
+- `CHANGELOG.md` is mandatory and must be kept current.
+- Use Keep a Changelog sections in each release entry:
+  - `Added`
+  - `Changed`
+  - `Fixed`
+  - `Security`
+- Release-note cadence:
+  - update `Unreleased` continuously during development
+  - publish release notes at least per milestone and/or per tagged release
+- If no code changes occurred in a cycle, add a short note stating that explicitly.

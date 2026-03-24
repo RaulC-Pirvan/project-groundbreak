@@ -352,7 +352,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add initial changelog/release notes policy
+- [x] Add initial changelog/release notes policy
 
 Step-by-step:
 
