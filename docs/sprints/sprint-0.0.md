@@ -329,7 +329,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add `CODEOWNERS` baseline (single-owner project)
+- [x] Add `CODEOWNERS` baseline (single-owner project)
 
 Step-by-step:
 
