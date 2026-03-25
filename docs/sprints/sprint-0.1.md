@@ -217,12 +217,12 @@ Done when:
 
 Checklist:
 
-- [ ] Setup GitHub Actions CI:
-  - [ ] lint
-  - [ ] typecheck
-  - [ ] unit tests
-  - [ ] build
-  - [ ] e2e smoke tests
+- [x] Setup GitHub Actions CI:
+  - [x] lint
+  - [x] typecheck
+  - [x] unit tests
+  - [x] build
+  - [x] e2e smoke tests
 
 Step-by-step:
 
