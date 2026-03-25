@@ -88,7 +88,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure ESLint + Prettier
+- [x] Configure ESLint + Prettier
 
 Step-by-step:
 
@@ -120,7 +120,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure Vitest (unit testing)
+- [x] Configure Vitest (unit testing)
 
 Step-by-step:
 
