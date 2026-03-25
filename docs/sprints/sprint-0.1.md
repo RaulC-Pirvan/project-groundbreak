@@ -32,7 +32,7 @@ This sprint does not cover product features.
 
 Checklist:
 
-- [ ] Initialize Next.js project (App Router, TypeScript strict)
+- [x] Initialize Next.js project (App Router, TypeScript strict)
 
 Step-by-step:
 
