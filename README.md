@@ -15,19 +15,22 @@ The product goal is to support user judgment with transparent evidence, not decl
 
 ## Current Status
 
-Current phase: `Phase 0 / Sprint 0.0` (GitHub & repository governance).
+Current phase: `Phase 0 / Sprint 0.1` (Project & tooling setup).
 
 Implemented so far:
 
-- roadmap baseline
-- sprint 0.0 plan
-- branching/governance policy docs
+- Next.js app scaffold (App Router + TypeScript strict)
+- Tailwind CSS baseline
+- ESLint + Prettier baseline
+- Vitest unit baseline + smoke test
+- Playwright E2E baseline + smoke test
+- GitHub Actions CI checks (lint, typecheck, unit, build, e2e smoke)
 
-Not implemented yet:
+Not implemented yet (beyond tooling baseline):
 
-- app scaffold (Next.js)
-- backend/API endpoints
+- backend/API feature endpoints
 - ingestion and scoring pipelines
+- auth and user workflows
 
 ## High-level Architecture
 
@@ -75,40 +78,75 @@ Locked baseline:
 ```bash
 git clone <YOUR_GIT_REMOTE_URL>
 cd project-groundbreak
+npm ci
+npm run prepare
 ```
 
-### Current runnable state
+### Run app locally
 
-At this stage, the application runtime is not scaffolded yet (Sprint 0.1 pending).
+```bash
+npm run dev
+```
 
-You can still validate repository setup by reviewing:
+Expected local URL:
 
-- roadmap and sprint docs
-- governance docs (`CONTRIBUTING.md`, `AGENTS.md`)
+- `http://localhost:3000`
 
 ## Common Commands
 
-Current commands (available now):
+Core development commands:
 
 ```bash
-# show repo status
-git status
-
-# create/update feature branch from dev
-git checkout dev
-git pull origin dev
-git checkout -b sprint-0.0-task-<id>
-```
-
-Planned app commands (after Sprint 0.1 scaffold):
-
-```bash
-npm install
 npm run dev
 npm run lint
 npm run typecheck
 npm run test
+npm run test:e2e
 ```
+
+Build command:
+
+```bash
+npm run build
+```
+
+## Troubleshooting
+
+- If dependencies fail to install, confirm Node.js `20+` and npm `10+`:
+
+```bash
+node -v
+npm -v
+```
+
+- If E2E tests fail because browsers are missing, install Playwright browsers:
+
+```bash
+npx playwright install chromium firefox
+```
+
+- If `npm ci` fails due to lockfile mismatch, regenerate lockfile locally and recommit:
+
+```bash
+rd /s /q node_modules
+npm install
+```
+
+- Use npm only for this repository. Do not add `yarn.lock` or `pnpm-lock.yaml`.
+
+- If Git hooks do not run, reinstall them:
+
+```bash
+npm run prepare
+```
+
+- If commit fails with a WSL message (for example `Windows Subsystem for Linux has no installed distributions`), re-run:
+
+```bash
+npm run prepare
+```
+
+This re-patches the Husky runner for Windows shell compatibility.
 
 ## Contribution Workflow
 
@@ -133,5 +171,6 @@ Detailed rules are in `CONTRIBUTING.md`.
 - Repository policy and engineering constraints: [AGENTS.md](AGENTS.md)
 - Project roadmap: [docs/roadmap.md](docs/roadmap.md)
 - Sprint 0.0 execution plan: [docs/sprints/sprint-0.0.md](docs/sprints/sprint-0.0.md)
+- Sprint 0.1 execution plan: [docs/sprints/sprint-0.1.md](docs/sprints/sprint-0.1.md)
 - Dissertation roadmap notes: [docs/dissertation-notes/roadmap-v1.md](docs/dissertation-notes/roadmap-v1.md)
 - Contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md)

@@ -14,6 +14,7 @@ This sprint covers:
 - Vitest and Playwright baseline tests
 - GitHub Actions CI with required checks
 - package manager + lockfile policy
+- Husky hooks for local quality gates
 - README local setup updates
 
 This sprint does not cover product features.
@@ -249,7 +250,7 @@ Done when:
 
 Checklist:
 
-- [ ] Establish package manager and lockfile policy
+- [x] Establish package manager and lockfile policy
 
 Step-by-step:
 
@@ -270,7 +271,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add README local setup instructions
+- [x] Add README local setup instructions
 
 Step-by-step:
 
@@ -298,6 +299,30 @@ Done when:
 
 ---
 
+## Task 11 - Add Husky Local Git Hooks
+
+Checklist:
+
+- [x] Add Husky local git hooks (`pre-commit`, `pre-push`)
+
+Step-by-step:
+
+1. Install `husky` and `lint-staged`.
+2. Add `prepare` script to bootstrap hooks.
+3. Add `.husky/pre-commit` to:
+   - run `lint-staged` (auto-format staged files)
+   - run quick checks (`lint`, `typecheck`, `unit tests`)
+4. Add `.husky/pre-push` to run local CI-equivalent checks (`lint`, `typecheck`, `unit tests`, `e2e smoke tests`).
+5. Document hook behavior in `README.md` and `CONTRIBUTING.md`.
+
+Done when:
+
+- commits auto-format staged code and fail on local quality gate violations
+- pushes fail if local CI-equivalent checks fail
+- hook setup and bypass notes are documented
+
+---
+
 ## Suggested Execution Order
 
 1. Task 1
@@ -308,6 +333,7 @@ Done when:
 6. Task 9
 7. Task 8
 8. Task 10
+9. Task 11
 
 ---
 
@@ -319,3 +345,4 @@ Done when:
 - CI enforces lint, typecheck, test, build, and E2E smoke checks.
 - npm lockfile policy is documented and applied.
 - README setup instructions are complete and runnable.
+- Husky hooks enforce local quality gates before commit/push.
