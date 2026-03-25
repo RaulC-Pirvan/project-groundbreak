@@ -30,28 +30,28 @@
 
 ### Sprint 0.0: GitHub & Repository Governance
 
-- [ ] Create GitHub repository and set default branch (`master`)
-- [ ] Define branching strategy:
-  - [ ] short-lived feature branches
-  - [ ] pull-request-only merges to `master`
-  - [ ] no direct pushes to `master`
-- [ ] Enable branch protection for `master`:
-  - [ ] require PR review
-  - [ ] require passing CI checks
-  - [ ] block force-push and branch deletion
-- [ ] Add PR template (scope, testing, docs, security impact)
-- [ ] Add issue templates (bug, feature, research/documentation)
-- [ ] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
-- [ ] Add milestone naming convention aligned with roadmap phases
-- [ ] Create `README.md` baseline:
-  - [ ] project purpose
-  - [ ] architecture summary
-  - [ ] local setup
-  - [ ] scripts and workflows
-  - [ ] contribution workflow
-- [ ] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
-- [ ] Add `CODEOWNERS` baseline (single-owner project)
-- [ ] Add initial changelog/release notes policy
+- [x] Create GitHub repository and set default branch (`master`)
+- [x] Define branching strategy:
+  - [x] short-lived feature branches
+  - [x] pull-request-only merges to `master`
+  - [x] no direct pushes to `master`
+- [x] Enable branch protection for `master`:
+  - [x] require PR review
+  - [x] require passing CI checks
+  - [x] block force-push and branch deletion
+- [x] Add PR template (scope, testing, docs, security impact)
+- [x] Add issue templates (bug, feature, research/documentation)
+- [x] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
+- [x] Add milestone naming convention aligned with roadmap phases
+- [x] Create `README.md` baseline:
+  - [x] project purpose
+  - [x] architecture summary
+  - [x] local setup
+  - [x] scripts and workflows
+  - [x] contribution workflow
+- [x] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
+- [x] Add `CODEOWNERS` baseline (single-owner project)
+- [x] Add initial changelog/release notes policy
 
 ---
 

@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.tmp/
+out/
+build/
+coverage/
+playwright-report/
+test-results/
+package-lock.json
+.github/
+docs/
+AGENTS.md
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
