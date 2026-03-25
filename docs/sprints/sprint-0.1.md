@@ -199,7 +199,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add E2E smoke test
+- [x] Add E2E smoke test
 
 Step-by-step:
 
