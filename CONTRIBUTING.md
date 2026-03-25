@@ -110,6 +110,13 @@ Examples:
 - `chore(repo): add issue templates`
 - `feat(api): add feed endpoint contract`
 
+## Package Manager and Lockfile Policy
+
+- npm is the only supported package manager for this repository.
+- `package-lock.json` must be committed for dependency changes.
+- `yarn.lock` and `pnpm-lock.yaml` must not be committed.
+- Use `npm ci` in CI for deterministic installs.
+
 ## Documentation Update Requirement
 
 Meaningful changes must update docs in the same PR.
