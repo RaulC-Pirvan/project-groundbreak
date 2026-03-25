@@ -181,7 +181,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add unit smoke test
+- [x] Add unit smoke test
 
 Step-by-step:
 
