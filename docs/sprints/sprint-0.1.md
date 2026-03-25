@@ -149,7 +149,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure Playwright (E2E baseline)
+- [x] Configure Playwright (E2E baseline)
 
 Step-by-step:
 
