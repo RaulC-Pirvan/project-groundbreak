@@ -69,7 +69,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure Tailwind CSS
+- [x] Configure Tailwind CSS
 
 Step-by-step:
 
