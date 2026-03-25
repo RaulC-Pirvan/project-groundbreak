@@ -65,6 +65,32 @@ Baseline required checks:
 
 If a check is temporarily unavailable, document the exception in the PR and restore the check quickly.
 
+## Local Git Hooks
+
+This repository uses Husky hooks to catch issues before code reaches CI.
+
+- `pre-commit`:
+  - formats staged files (`lint-staged`)
+  - runs quick local checks (`lint`, `typecheck`, `unit tests`)
+- `pre-push`:
+  - runs local CI-equivalent checks (`lint`, `typecheck`, `unit tests`, `e2e smoke tests`)
+
+Setup:
+
+```bash
+npm ci
+npm run prepare
+```
+
+If hooks fail on Windows with a WSL shell error, run `npm run prepare` again to reapply the Husky runner compatibility patch.
+
+Bypass (emergency only):
+
+```bash
+git commit --no-verify
+git push --no-verify
+```
+
 ## Issue, Labels, and Milestones
 
 Each issue should map to one concrete task.
@@ -109,6 +135,13 @@ Examples:
 - `docs: add contributing workflow and CI gate policy`
 - `chore(repo): add issue templates`
 - `feat(api): add feed endpoint contract`
+
+## Package Manager and Lockfile Policy
+
+- npm is the only supported package manager for this repository.
+- `package-lock.json` must be committed for dependency changes.
+- `yarn.lock` and `pnpm-lock.yaml` must not be committed.
+- Use `npm ci` in CI for deterministic installs.
 
 ## Documentation Update Requirement
 

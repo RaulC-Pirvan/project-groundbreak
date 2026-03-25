@@ -71,6 +71,7 @@
   - [ ] build
   - [ ] e2e smoke tests
 - [ ] Establish package manager and lockfile policy
+- [ ] Add Husky hooks for local quality gates (`pre-commit` and `pre-push`)
 - [ ] Add README local setup instructions
 
 ---

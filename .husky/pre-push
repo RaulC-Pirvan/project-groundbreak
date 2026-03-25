@@ -1,0 +1,4 @@
+node ./node_modules/eslint/bin/eslint.js .
+node ./node_modules/typescript/bin/tsc --noEmit
+node ./node_modules/vitest/vitest.mjs run
+node ./scripts/run-playwright.mjs
