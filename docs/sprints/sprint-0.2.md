@@ -180,7 +180,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add db health check path
+- [x] Add db health check path
 
 Step-by-step:
 

@@ -175,6 +175,12 @@ npm run db:check
 
 The command uses Prisma to run a `SELECT 1` probe and prints actionable failure hints when connectivity fails.
 
+DB health endpoint (app must be running):
+
+```bash
+curl http://localhost:3000/api/v1/health/db
+```
+
 ## Troubleshooting
 
 - If dependencies fail to install, confirm Node.js `20+` and npm `10+`:
@@ -230,6 +236,11 @@ docker compose logs -f postgres
   - Ensure PostgreSQL is running on port `5432`.
   - Check for local port conflicts on `5432`.
   - Confirm migrations are applied (`npm run db:migrate -- --name <migration_name>`).
+
+- If `/api/v1/health/db` returns `503`:
+  - Check local DB status with `npm run db:check`.
+  - Check `docker compose ps` and `docker compose logs -f postgres`.
+  - Verify `.env` has valid `APP_ENV` and `DATABASE_URL`.
 
 ## Contribution Workflow
 

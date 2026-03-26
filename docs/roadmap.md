@@ -83,7 +83,7 @@
 - [x] Configure Prisma + initial migration workflow
 - [x] Configure local secret workflow (`.env` + validation + no repo secrets)
 - [x] Verify app-to-db connectivity in development environment
-- [ ] Add db health check path
+- [x] Add db health check path
 - [ ] Document deferred cloud activation criteria and cost gate
 
 ---
