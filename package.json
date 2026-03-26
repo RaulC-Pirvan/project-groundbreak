@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint-staged": "lint-staged",
+    "postinstall": "prisma generate",
     "prepare": "husky && node scripts/patch-husky-runner.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
