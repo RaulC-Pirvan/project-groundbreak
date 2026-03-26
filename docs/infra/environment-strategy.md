@@ -48,3 +48,5 @@ Define clear environment boundaries so development stays reproducible, secure, a
 
 `prod` environment implementation is intentionally deferred to Sprint `0.7` (AWS activation).  
 Current sprint focus remains local development reliability with zero paid cloud spend.
+
+Cloud activation is governed by: `docs/infra/cloud-activation-gate.md`.

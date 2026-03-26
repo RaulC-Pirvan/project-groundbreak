@@ -84,7 +84,9 @@
 - [x] Configure local secret workflow (`.env` + validation + no repo secrets)
 - [x] Verify app-to-db connectivity in development environment
 - [x] Add db health check path
-- [ ] Document deferred cloud activation criteria and cost gate
+- [x] Document deferred cloud activation criteria and cost gate
+
+Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
 
 ---
 
@@ -158,6 +160,8 @@
 - [ ] Configure AWS secret management (SSM Parameter Store standard first; Secrets Manager when needed)
 - [ ] Verify app-to-db connectivity against AWS environment
 - [ ] Add cloud runbook notes (provisioning, rollback, and cost controls)
+
+Execution of Sprint 0.7 is gated by: `docs/infra/cloud-activation-gate.md`.
 
 ---
 

@@ -268,5 +268,6 @@ Detailed rules are in `CONTRIBUTING.md`.
 - Sprint 0.1 execution plan: [docs/sprints/sprint-0.1.md](docs/sprints/sprint-0.1.md)
 - Sprint 0.2 execution plan: [docs/sprints/sprint-0.2.md](docs/sprints/sprint-0.2.md)
 - Environment strategy baseline: [docs/infra/environment-strategy.md](docs/infra/environment-strategy.md)
+- Cloud activation gate policy: [docs/infra/cloud-activation-gate.md](docs/infra/cloud-activation-gate.md)
 - Dissertation roadmap notes: [docs/dissertation-notes/roadmap-v1.md](docs/dissertation-notes/roadmap-v1.md)
 - Contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md)

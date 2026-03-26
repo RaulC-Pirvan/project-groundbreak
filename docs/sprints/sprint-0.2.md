@@ -205,7 +205,7 @@ Done when:
 
 Checklist:
 
-- [ ] Document deferred cloud activation criteria and cost gate
+- [x] Document deferred cloud activation criteria and cost gate
 
 Step-by-step:
 
@@ -226,6 +226,10 @@ Done when:
 - cloud activation gate criteria are clear and documented
 - deferred AWS scope is traceable in project planning artifacts
 - no-spend policy is enforceable for current phase
+
+Implementation note:
+
+- Policy doc: `docs/infra/cloud-activation-gate.md`
 
 ---
 
