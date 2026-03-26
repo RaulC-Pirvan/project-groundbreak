@@ -8,7 +8,7 @@ Goal: Establish repository governance so all future development is controlled, r
 
 This sprint covers:
 
-- GitHub repository setup and `main` branch baseline
+- GitHub repository setup and `master` branch baseline
 - Branching strategy and merge rules
 - Branch protection and quality gates
 - PR/Issue templates
@@ -24,7 +24,7 @@ This sprint does not cover feature implementation.
 
 - Git installed locally
 - GitHub account access
-- Repository name decided (`Project Groundbreak`)
+- Repository name decided (`project-groundbreak`)
 
 Optional but useful:
 
@@ -32,18 +32,18 @@ Optional but useful:
 
 ---
 
-## Task 1 - Create GitHub Repository and Set `main`
+## Task 1 - Create GitHub Repository and Set `master`
 
 Checklist:
 
-- [ ] Create GitHub repository and set default branch (`main`)
+- [x] Create GitHub repository and set default branch (`master`)
 
 Step-by-step:
 
 1. Initialize local git repository in project root:
 
 ```bash
-git init -b main
+git init -b master
 ```
 
 2. Create a `.gitignore` suitable for Next.js/Node before first commit.
@@ -59,16 +59,16 @@ git commit -m "chore(repo): initialize repository baseline"
 
 ```bash
 git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
+git push -u origin master
 ```
 
-6. In GitHub: `Settings -> Branches`, verify default branch is `main`.
+6. In GitHub: `Settings -> Branches`, verify default branch is `master`.
 
 Done when:
 
 - local repo exists with initial commit
 - remote push succeeded
-- GitHub default branch is `main`
+- GitHub default branch is `master`
 
 ---
 
@@ -77,64 +77,88 @@ Done when:
 Checklist:
 
 - [ ] Define branching strategy:
-  - [ ] short-lived feature branches
-  - [ ] pull-request-only merges to `main`
-  - [ ] no direct pushes to `main`
+  - [x] long-lived branches: `master` (release) and `dev` (phase integration)
+  - [x] sprint branches created from `dev` (for example: `sprint-0.3`)
+  - [x] pull-request-only merges from sprint branches into `dev`
+  - [x] phase-end pull-request merge from `dev` into `master`
+  - [x] no direct pushes to `master` (recommended: also no direct pushes to `dev`)
 
 Step-by-step:
 
-1. Adopt branch naming convention:
-   - `feat/<short-topic>`
-   - `fix/<short-topic>`
-   - `chore/<short-topic>`
-   - `docs/<short-topic>`
-2. Keep branches short-lived (target: merge within 1-3 days of active work).
-3. Require all changes to `main` through PRs only.
-4. Define merge method:
-   - recommended: squash merge for cleaner history
-5. Document this in `CONTRIBUTING.md`.
+1. Create `dev` from `master` and push:
+
+```bash
+git checkout master
+git pull origin master
+git checkout -b dev
+git push -u origin dev
+```
+
+2. For each sprint, create a sprint branch from `dev`:
+
+```bash
+git checkout dev
+git pull origin dev
+git checkout -b sprint-0.3
+```
+
+3. Work only on the sprint branch. When ready, open a PR from `sprint-0.3` to `dev`.
+4. When all planned sprints for the phase are integrated into `dev`, open a phase PR from `dev` to `master`.
+5. Keep sprint branches short-lived; delete each sprint branch after merge.
+6. Optional (for smaller scoped branches inside a sprint), use intent prefixes:
+   - `feat/<topic>` for new functionality
+   - `fix/<topic>` for bug fixes
+   - `chore/<topic>` for tooling/maintenance/non-feature work
+   - `docs/<topic>` for documentation-only changes
+7. Document this workflow in `CONTRIBUTING.md`.
 
 Done when:
 
-- naming convention is documented
-- direct push to `main` is prohibited by policy
-
+- `dev` exists and is used as the phase integration branch
+- sprint branches are merged into `dev` via PRs
+- phase release flow (`dev` -> `master`) is documented
+- direct push to `master` is blocked by policy
 ---
 
-## Task 3 - Enable Branch Protection for `main`
+## Task 3 - Enable Branch Protection for `master` and `dev`
 
 Checklist:
 
-- [ ] Enable branch protection for `main`:
-  - [ ] require PR review
-  - [ ] require passing CI checks
-  - [ ] block force-push and branch deletion
+- [x] Enable branch protection for `master`:
+  - [x] require PR before merge
+  - [x] require passing CI checks
+  - [x] block force-push and branch deletion
+- [x] Enable branch protection for `dev`:
+  - [x] require PR before merge
+  - [x] require passing CI checks
+  - [x] block direct integration by push
 
 Step-by-step:
 
 1. Open GitHub: `Settings -> Branches -> Add branch protection rule`.
-2. Rule target: `main`.
-3. Enable:
+2. Create rule for `master`:
    - `Require a pull request before merging`
-   - `Require approvals` (set to at least 1)
    - `Require status checks to pass before merging`
-   - `Do not allow bypassing the above settings` (if available)
    - `Allow force pushes` = disabled
    - `Allow deletions` = disabled
-4. After CI workflow exists, select required checks (`lint`, `typecheck`, `tests`, `build`).
+   - `Require approvals` = recommended when collaborating with others; for strict solo flow you can rely on CI + PR discipline.
+3. Create rule for `dev`:
+   - `Require a pull request before merging`
+   - `Require status checks to pass before merging`
+   - keep direct push disabled through branch protection settings
+4. After CI workflows exist, mark required checks (`lint`, `typecheck`, `tests`, `build`).
 
 Done when:
 
-- branch protection is active on `main`
-- merges are blocked without review/checks
-
+- branch protection is active on both `master` and `dev`
+- integration to `dev` and release to `master` are PR-gated
 ---
 
 ## Task 4 - Add PR Template
 
 Checklist:
 
-- [ ] Add PR template (scope, testing, docs, security impact)
+- [x] Add PR template (scope, testing, docs, security impact)
 
 Step-by-step:
 
@@ -186,7 +210,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add issue templates (bug, feature, research/documentation)
+- [x] Add issue templates (bug, feature, research/documentation)
 
 Step-by-step:
 
@@ -207,7 +231,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
+- [x] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
 
 Step-by-step:
 
@@ -228,7 +252,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add milestone naming convention aligned with roadmap phases
+- [x] Add milestone naming convention aligned with roadmap phases
 
 Step-by-step:
 
@@ -252,12 +276,12 @@ Done when:
 
 Checklist:
 
-- [ ] Create `README.md` baseline:
-  - [ ] project purpose
-  - [ ] architecture summary
-  - [ ] local setup
-  - [ ] scripts and workflows
-  - [ ] contribution workflow
+- [x] Create `README.md` baseline:
+  - [x] project purpose
+  - [x] architecture summary
+  - [x] local setup
+  - [x] scripts and workflows
+  - [x] contribution workflow
 
 Step-by-step:
 
@@ -283,7 +307,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
+- [x] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
 
 Step-by-step:
 
@@ -305,7 +329,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add `CODEOWNERS` baseline (single-owner project)
+- [x] Add `CODEOWNERS` baseline (single-owner project)
 
 Step-by-step:
 
@@ -328,7 +352,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add initial changelog/release notes policy
+- [x] Add initial changelog/release notes policy
 
 Step-by-step:
 
@@ -362,8 +386,10 @@ Done when:
 ## Sprint 0.0 Exit Criteria
 
 - GitHub repository governance is active and enforced.
-- Main branch is protected.
+- `master` and `dev` protections are active.
 - PR/issue workflows are standardized.
 - Baseline project docs (`README`, `CONTRIBUTING`, `CHANGELOG`) exist.
 - Ownership and release process are explicit.
+
+
 
