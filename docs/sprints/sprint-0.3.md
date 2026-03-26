@@ -151,7 +151,7 @@ Done when:
 
 Checklist:
 
-- [ ] Document Docker workflows and troubleshooting notes in README
+- [x] Document Docker workflows and troubleshooting notes in README
 
 Step-by-step:
 
