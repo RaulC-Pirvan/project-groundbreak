@@ -1,6 +1,29 @@
 name: project-groundbreak
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: project-groundbreak:local
+    container_name: groundbreak-app
+    restart: unless-stopped
+    environment:
+      APP_ENV: ${APP_ENV:-dev}
+      DATABASE_URL: ${APP_DATABASE_URL:-postgresql://groundbreak:change_me_local_only@postgres:5432/groundbreak_dev?schema=public}
+      PORT: "3000"
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/ >/dev/null || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
   postgres:
     image: postgres:16-alpine
     container_name: groundbreak-postgres

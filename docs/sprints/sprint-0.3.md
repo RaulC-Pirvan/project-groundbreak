@@ -58,7 +58,7 @@ Done when:
 
 Checklist:
 
-- [ ] Create `docker-compose.yml` for local development
+- [x] Create `docker-compose.yml` for local development
 
 Step-by-step:
 
