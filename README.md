@@ -146,6 +146,14 @@ docker compose --profile app up -d app
 docker compose --profile app --profile postgres up -d
 ```
 
+Recommended npm shortcuts for local Docker workflow:
+
+```bash
+npm run docker:up
+npm run docker:logs
+npm run docker:down
+```
+
 Docker image optimization notes (`Sprint 0.3 / Task 4`):
 
 - `.dockerignore` excludes local-only and non-runtime files (`.git`, test outputs, docs, local env files, caches) from build context.

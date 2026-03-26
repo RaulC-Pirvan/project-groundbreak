@@ -126,7 +126,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add local run scripts (`docker compose up/down/logs`)
+- [x] Add local run scripts (`docker compose up/down/logs`)
 
 Step-by-step:
 
