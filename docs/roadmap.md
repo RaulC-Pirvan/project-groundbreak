@@ -57,34 +57,34 @@
 
 ### Sprint 0.1: Project & Tooling Setup
 
-- [ ] Initialize Next.js project (App Router, TypeScript strict)
-- [ ] Configure Tailwind CSS
-- [ ] Configure ESLint + Prettier
-- [ ] Configure Vitest (unit testing)
-- [ ] Configure Playwright (E2E baseline)
-- [ ] Add unit smoke test
-- [ ] Add E2E smoke test
-- [ ] Setup GitHub Actions CI:
-  - [ ] lint
-  - [ ] typecheck
-  - [ ] unit tests
-  - [ ] build
-  - [ ] e2e smoke tests
-- [ ] Establish package manager and lockfile policy
-- [ ] Add Husky hooks for local quality gates (`pre-commit` and `pre-push`)
-- [ ] Add README local setup instructions
+- [x] Initialize Next.js project (App Router, TypeScript strict)
+- [x] Configure Tailwind CSS
+- [x] Configure ESLint + Prettier
+- [x] Configure Vitest (unit testing)
+- [x] Configure Playwright (E2E baseline)
+- [x] Add unit smoke test
+- [x] Add E2E smoke test
+- [x] Setup GitHub Actions CI:
+  - [x] lint
+  - [x] typecheck
+  - [x] unit tests
+  - [x] build
+  - [x] e2e smoke tests
+- [x] Establish package manager and lockfile policy
+- [x] Add Husky hooks for local quality gates (`pre-commit` and `pre-push`)
+- [x] Add README local setup instructions
 
 ---
 
-### Sprint 0.2: AWS & Database Foundation
+### Sprint 0.2: Local Database Foundation (No-Spend Track)
 
-- [ ] Create AWS environment strategy (`dev`, `test`, `prod`)
-- [ ] Setup AWS IAM least-privilege roles for app/runtime/ops
-- [ ] Provision AWS RDS PostgreSQL
+- [x] Define environment strategy baseline (`dev`, `test`, `prod`)
+- [ ] Configure local PostgreSQL for development (Docker profile)
 - [ ] Configure Prisma + initial migration workflow
-- [ ] Configure secret management (AWS Secrets Manager and/or SSM)
+- [ ] Configure local secret workflow (`.env` + validation + no repo secrets)
 - [ ] Verify app-to-db connectivity in development environment
 - [ ] Add db health check path
+- [ ] Document deferred cloud activation criteria and cost gate
 
 ---
 
@@ -147,6 +147,17 @@
 - [ ] Create `docs/evaluation.md` baseline metrics plan
 - [ ] Create first ADR entries in `docs/adr/`
 - [ ] Create first dissertation note pack in `docs/dissertation-notes/`
+
+---
+
+### Sprint 0.7: AWS Activation (Deferred Until Budget Readiness)
+
+- [ ] Finalize AWS environment strategy implementation (`dev`, `test`, `prod`)
+- [ ] Setup AWS IAM least-privilege roles for app/runtime/ops
+- [ ] Provision AWS RDS PostgreSQL (cost-gated execution)
+- [ ] Configure AWS secret management (SSM Parameter Store standard first; Secrets Manager when needed)
+- [ ] Verify app-to-db connectivity against AWS environment
+- [ ] Add cloud runbook notes (provisioning, rollback, and cost controls)
 
 ---
 

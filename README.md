@@ -15,7 +15,7 @@ The product goal is to support user judgment with transparent evidence, not decl
 
 ## Current Status
 
-Current phase: `Phase 0 / Sprint 0.1` (Project & tooling setup).
+Current phase: `Phase 0 / Sprint 0.2` (Local database foundation, no-spend track).
 
 Implemented so far:
 
@@ -172,5 +172,7 @@ Detailed rules are in `CONTRIBUTING.md`.
 - Project roadmap: [docs/roadmap.md](docs/roadmap.md)
 - Sprint 0.0 execution plan: [docs/sprints/sprint-0.0.md](docs/sprints/sprint-0.0.md)
 - Sprint 0.1 execution plan: [docs/sprints/sprint-0.1.md](docs/sprints/sprint-0.1.md)
+- Sprint 0.2 execution plan: [docs/sprints/sprint-0.2.md](docs/sprints/sprint-0.2.md)
+- Environment strategy baseline: [docs/infra/environment-strategy.md](docs/infra/environment-strategy.md)
 - Dissertation roadmap notes: [docs/dissertation-notes/roadmap-v1.md](docs/dissertation-notes/roadmap-v1.md)
 - Contribution rules: [CONTRIBUTING.md](CONTRIBUTING.md)
