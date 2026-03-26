@@ -92,15 +92,15 @@ Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
 
 ### Sprint 0.3: Containerization Baseline (Docker)
 
-- [ ] Create production-ready `Dockerfile` for Next.js app (multi-stage build)
-- [ ] Create `docker-compose.yml` for local development
-- [ ] Add local services profile for:
-  - [ ] app
-  - [ ] postgres (dev-only local DB option)
-- [ ] Add `.dockerignore` and image-size optimization pass
-- [ ] Add local run scripts (`docker compose up/down/logs`)
-- [ ] Document Docker workflows and troubleshooting notes in README
-- [ ] Add image build step in CI
+- [x] Create production-ready `Dockerfile` for Next.js app (multi-stage build)
+- [x] Create `docker-compose.yml` for local development
+- [x] Add local services profile for:
+  - [x] app
+  - [x] postgres (dev-only local DB option)
+- [x] Add `.dockerignore` and image-size optimization pass
+- [x] Add local run scripts (`docker compose up/down/logs`)
+- [x] Document Docker workflows and troubleshooting notes in README
+- [x] Add image build step in CI
 
 ---
 

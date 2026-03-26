@@ -15,7 +15,7 @@ The product goal is to support user judgment with transparent evidence, not decl
 
 ## Current Status
 
-Current phase: `Phase 0 / Sprint 0.2` (Local database foundation, no-spend track).
+Current phase: `Phase 0 / Sprint 0.3` (Containerization baseline).
 
 Implemented so far:
 
@@ -24,7 +24,7 @@ Implemented so far:
 - ESLint + Prettier baseline
 - Vitest unit baseline + smoke test
 - Playwright E2E baseline + smoke test
-- GitHub Actions CI checks (lint, typecheck, unit, build, e2e smoke)
+- GitHub Actions CI checks (lint, typecheck, unit, build, e2e smoke, docker build validation)
 
 Not implemented yet (beyond tooling baseline):
 
@@ -72,7 +72,7 @@ Locked baseline:
 - Git
 - Node.js 20+ (recommended)
 - npm 10+ (recommended)
-- Docker Desktop (for local PostgreSQL)
+- Docker Desktop (for local PostgreSQL and containerized app workflows)
 
 ### Repository setup
 
@@ -108,23 +108,103 @@ Baseline PostgreSQL environment variables used by `docker-compose.yml`:
 - `POSTGRES_PASSWORD` (default: `change_me_local_only`)
 - `POSTGRES_PORT` (default: `5432`)
 
-Start local PostgreSQL:
+### Docker Workflows (Sprint 0.3)
+
+Docker prerequisites for this repository:
+
+- Docker Desktop (or equivalent Docker runtime) installed and running
+- local `.env` created from `.env.example`
+- ports `3000` (app) and `5432` (Postgres) available, or overridden via env
+
+First-run flow (recommended):
 
 ```bash
-docker compose up -d postgres
+copy .env.example .env
+npm run docker:up
+npm run docker:logs
 ```
 
-View PostgreSQL logs:
+Expected local endpoints after startup:
+
+- app: `http://localhost:3000`
+- db health: `http://localhost:3000/api/v1/health/db`
+
+Stop local Docker stack:
 
 ```bash
-docker compose logs -f postgres
+npm run docker:down
 ```
 
-Stop local PostgreSQL:
+Common local Docker flows:
+
+- build + start app + local Postgres:
 
 ```bash
-docker compose down
+npm run docker:up
 ```
+
+- stream local logs:
+
+```bash
+npm run docker:logs
+```
+
+- stop and remove stack resources:
+
+```bash
+npm run docker:down
+```
+
+- rebuild app image without stale layers:
+
+```bash
+docker compose --profile app --profile postgres build --no-cache app
+npm run docker:up
+```
+
+Compose profile usage examples:
+
+- `db-only` (dev-only local DB option):
+
+```bash
+docker compose --profile postgres up -d postgres
+docker compose --profile postgres logs -f postgres
+docker compose --profile postgres down
+```
+
+- `app-only` (requires external DB URL via `APP_DATABASE_URL` in `.env`):
+
+```bash
+docker compose --profile app up -d app
+docker compose --profile app logs -f app
+docker compose --profile app down
+```
+
+- `app+db` full local baseline:
+
+```bash
+docker compose --profile app --profile postgres up -d --build
+docker compose --profile app --profile postgres logs -f --tail=200
+docker compose --profile app --profile postgres down
+```
+
+Docker image optimization notes (`Sprint 0.3 / Task 4`):
+
+- `.dockerignore` excludes local-only and non-runtime files (`.git`, test outputs, docs, local env files, caches) from build context.
+- Next.js uses `output: "standalone"` so runtime image ships only traced production dependencies.
+- Runtime image does not run `npm ci`; it copies standalone build output instead.
+- Runtime env fail-fast checks are preserved through `scripts/validate-runtime-env.mjs` before server startup.
+- Trade-off: runtime env validation exists in both TypeScript (`src/config/env.ts`) and a lightweight container startup script, which requires keeping validation rules aligned.
+
+Containerization planning references:
+
+- roadmap item: [docs/roadmap.md](docs/roadmap.md) (`Sprint 0.3: Containerization Baseline`)
+- sprint execution doc: [docs/sprints/sprint-0.3.md](docs/sprints/sprint-0.3.md)
+
+CI Docker gate purpose (`Sprint 0.3 / Task 7`):
+
+- CI runs a build-only `docker build` validation job on `push` and `pull_request`.
+- This catches Dockerfile/runtime packaging regressions early without pushing images to any registry.
 
 ## Secret Hygiene
 
@@ -241,6 +321,34 @@ docker compose logs -f postgres
   - Check local DB status with `npm run db:check`.
   - Check `docker compose ps` and `docker compose logs -f postgres`.
   - Verify `.env` has valid `APP_ENV` and `DATABASE_URL`.
+
+- Docker port conflicts (`3000` app, `5432` postgres):
+  - Check current bindings: `docker ps`.
+  - Override ports in `.env`:
+    - `APP_PORT="3001"`
+    - `POSTGRES_PORT="5433"`
+  - Restart stack: `npm run docker:down` then `npm run docker:up`.
+
+- Stale containers or networks:
+  - Run `npm run docker:down`.
+  - Remove orphan resources: `docker compose --profile app --profile postgres down --remove-orphans`.
+  - Retry startup with `npm run docker:up`.
+
+- Stale Postgres volume state (unexpected old data/schema):
+  - Stop stack: `npm run docker:down`.
+  - Remove local DB volume (destructive for local DB data):
+    - `docker volume rm project-groundbreak_groundbreak_postgres_data`
+  - Start fresh local DB: `npm run docker:up`.
+
+- Build cache confusion (image not reflecting latest changes):
+  - Rebuild without cache:
+    - `docker compose --profile app --profile postgres build --no-cache app`
+  - Restart: `npm run docker:up`.
+
+- Env/config mismatch in container startup:
+  - Validate `.env` contains `APP_ENV` and `DATABASE_URL` with PostgreSQL protocol.
+  - For `app-only` profile, ensure `APP_DATABASE_URL` targets a reachable external DB host.
+  - Inspect startup logs: `docker compose --profile app logs -f app`.
 
 ## Contribution Workflow
 

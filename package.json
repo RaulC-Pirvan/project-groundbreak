@@ -21,7 +21,10 @@
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
     "db:check": "node scripts/db-check.mjs",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "docker:up": "docker compose --profile app --profile postgres up -d --build",
+    "docker:down": "docker compose --profile app --profile postgres down",
+    "docker:logs": "docker compose --profile app --profile postgres logs -f --tail=200"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.5.0",

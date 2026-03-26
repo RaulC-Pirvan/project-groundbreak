@@ -1,0 +1,34 @@
+# Version control and metadata
+.git
+.gitignore
+.gitattributes
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies and local build output
+node_modules
+.next
+out
+dist
+coverage
+*.tsbuildinfo
+
+# Test artifacts
+test-results
+playwright-report
+
+# Local tooling and IDE files
+.tmp
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Repository content not required for image build context
+docs
+tests
+.github
+.husky
