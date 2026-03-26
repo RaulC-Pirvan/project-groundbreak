@@ -49,7 +49,8 @@ These are **not the same thing** and must never be conflated in the architecture
 - Sprint status in repository artifacts:
   - Sprint `0.0` governance baseline: completed
   - Sprint `0.1` tooling baseline: completed (Tasks 1-11)
-  - Sprint `0.2` AWS + database foundation: next execution target
+  - Sprint `0.2` local database foundation (no-spend track): completed (Tasks 1-7)
+  - Sprint `0.3` containerization baseline: next execution target
 - Implemented baseline in code:
   - Next.js App Router scaffold with TypeScript strict mode
   - Tailwind CSS, ESLint, and Prettier configured
@@ -57,12 +58,19 @@ These are **not the same thing** and must never be conflated in the architecture
   - GitHub Actions CI workflow with lint, typecheck, unit tests, build, and E2E smoke jobs
   - npm-only package/lockfile policy documented and enforced
   - Husky local hooks (`pre-commit`, `pre-push`) with `lint-staged` and CI-equivalent local checks
+  - Local PostgreSQL Docker profile with named persistent volume and health check
+  - Prisma setup with initial migration workflow and repeatable DB scripts (`db:generate`, `db:migrate`, `db:check`, `db:studio`)
+  - Runtime environment validation baseline (`APP_ENV`, `DATABASE_URL`) with fail-fast behavior on app/test startup
+  - Prisma-based DB connectivity probe (`npm run db:check`) with actionable diagnostics
+  - DB health check endpoint (`/api/v1/health/db`) with timeout-bounded probe and safe degraded responses
+  - Deferred cloud activation and cost-gate policy documented in `docs/infra/cloud-activation-gate.md`
 - Not implemented yet (by design at this stage):
-  - core backend/API product features
+  - core backend/API product features beyond baseline health/connectivity surfaces
   - ingestion pipeline
   - scoring/fusion pipeline
   - authentication and voting flows
-  - database schema/migrations
+  - MVP domain data model schema (`User`, `Source`, `Article`, `Analysis`, `Vote`, `FactCheckEvidence`, `AuditLog`)
+  - AWS activation execution (`IAM`, `RDS`, and AWS secret-store rollout), deferred behind cost gate
 
 ---
 
@@ -210,7 +218,7 @@ Treat these as the current baseline until explicitly revised.
   - avoid introducing major new features during final stabilization and dissertation-writeup windows; focus on reliability, evaluation evidence, and documentation quality.
 - Sprint output requirement: each sprint must produce implementation, tests, and documentation updates in the same cycle.
 - Progress governance: maintain an actively prioritized backlog with MoSCoW-style scope control (`Must`, `Should`, `Could`, `Won't-now`) to prevent dissertation-risking scope creep.
-- Immediate next execution action: begin Sprint 0.2 (AWS environment strategy, IAM baseline, RDS provisioning path, Prisma workflow, secrets setup, and db connectivity validation) with tests/docs updated in the same cycle.
+- Immediate next execution action: begin Sprint 0.3 (containerization baseline: production-ready `Dockerfile`, compose workflow alignment, image build CI step, and docs updates) with tests/docs updated in the same cycle.
 
 ---
 
