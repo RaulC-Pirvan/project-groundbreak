@@ -30,63 +30,60 @@
 
 ### Sprint 0.0: GitHub & Repository Governance
 
-- [x] Create GitHub repository and set default branch (`master`)
-- [x] Define branching strategy:
-  - [x] short-lived feature branches
-  - [x] pull-request-only merges to `master`
-  - [x] no direct pushes to `master`
-- [x] Enable branch protection for `master`:
-  - [x] require PR review
-  - [x] require passing CI checks
-  - [x] block force-push and branch deletion
-- [x] Add PR template (scope, testing, docs, security impact)
-- [x] Add issue templates (bug, feature, research/documentation)
-- [x] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
-- [x] Add milestone naming convention aligned with roadmap phases
-- [x] Create `README.md` baseline:
-  - [x] project purpose
-  - [x] architecture summary
-  - [x] local setup
-  - [x] scripts and workflows
-  - [x] contribution workflow
-- [x] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
-- [x] Add `CODEOWNERS` baseline (single-owner project)
-- [x] Add initial changelog/release notes policy
+- [ ] Create GitHub repository and set default branch (`main`)
+- [ ] Define branching strategy:
+  - [ ] short-lived feature branches
+  - [ ] pull-request-only merges to `main`
+  - [ ] no direct pushes to `main`
+- [ ] Enable branch protection for `main`:
+  - [ ] require PR review
+  - [ ] require passing CI checks
+  - [ ] block force-push and branch deletion
+- [ ] Add PR template (scope, testing, docs, security impact)
+- [ ] Add issue templates (bug, feature, research/documentation)
+- [ ] Add label taxonomy (`type:*`, `priority:*`, `area:*`, `risk:*`)
+- [ ] Add milestone naming convention aligned with roadmap phases
+- [ ] Create `README.md` baseline:
+  - [ ] project purpose
+  - [ ] architecture summary
+  - [ ] local setup
+  - [ ] scripts and workflows
+  - [ ] contribution workflow
+- [ ] Add `CONTRIBUTING.md` (branch/PR/commit expectations)
+- [ ] Add `CODEOWNERS` baseline (single-owner project)
+- [ ] Add initial changelog/release notes policy
 
 ---
 
 ### Sprint 0.1: Project & Tooling Setup
 
-- [x] Initialize Next.js project (App Router, TypeScript strict)
-- [x] Configure Tailwind CSS
-- [x] Configure ESLint + Prettier
-- [x] Configure Vitest (unit testing)
-- [x] Configure Playwright (E2E baseline)
-- [x] Add unit smoke test
-- [x] Add E2E smoke test
-- [x] Setup GitHub Actions CI:
-  - [x] lint
-  - [x] typecheck
-  - [x] unit tests
-  - [x] build
-  - [x] e2e smoke tests
-- [x] Establish package manager and lockfile policy
-- [x] Add Husky hooks for local quality gates (`pre-commit` and `pre-push`)
-- [x] Add README local setup instructions
+- [ ] Initialize Next.js project (App Router, TypeScript strict)
+- [ ] Configure Tailwind CSS
+- [ ] Configure ESLint + Prettier
+- [ ] Configure Vitest (unit testing)
+- [ ] Configure Playwright (E2E baseline)
+- [ ] Add unit smoke test
+- [ ] Add E2E smoke test
+- [ ] Setup GitHub Actions CI:
+  - [ ] lint
+  - [ ] typecheck
+  - [ ] unit tests
+  - [ ] build
+  - [ ] e2e smoke tests
+- [ ] Establish package manager and lockfile policy
+- [ ] Add README local setup instructions
 
 ---
 
-### Sprint 0.2: Local Database Foundation (No-Spend Track)
+### Sprint 0.2: AWS & Database Foundation
 
-- [x] Define environment strategy baseline (`dev`, `test`, `prod`)
-- [x] Configure local PostgreSQL for development (Docker profile)
-- [x] Configure Prisma + initial migration workflow
-- [x] Configure local secret workflow (`.env` + validation + no repo secrets)
-- [x] Verify app-to-db connectivity in development environment
-- [x] Add db health check path
-- [x] Document deferred cloud activation criteria and cost gate
-
-Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
+- [ ] Create AWS environment strategy (`dev`, `test`, `prod`)
+- [ ] Setup AWS IAM least-privilege roles for app/runtime/ops
+- [ ] Provision AWS RDS PostgreSQL
+- [ ] Configure Prisma + initial migration workflow
+- [ ] Configure secret management (AWS Secrets Manager and/or SSM)
+- [ ] Verify app-to-db connectivity in development environment
+- [ ] Add db health check path
 
 ---
 
@@ -115,7 +112,7 @@ Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
 - [ ] Add dependency vulnerability checks (`npm audit` baseline policy)
 - [ ] Add secret scanning baseline in CI
 - [ ] Add container image vulnerability scan baseline (for Docker images)
-- [ ] Define branch protection policy for master branch
+- [ ] Define branch protection policy for main branch
 - [ ] Add release tagging/versioning policy notes
 
 ---
@@ -149,19 +146,6 @@ Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
 - [ ] Create `docs/evaluation.md` baseline metrics plan
 - [ ] Create first ADR entries in `docs/adr/`
 - [ ] Create first dissertation note pack in `docs/dissertation-notes/`
-
----
-
-### Sprint 0.7: AWS Activation (Deferred Until Budget Readiness)
-
-- [ ] Finalize AWS environment strategy implementation (`dev`, `test`, `prod`)
-- [ ] Setup AWS IAM least-privilege roles for app/runtime/ops
-- [ ] Provision AWS RDS PostgreSQL (cost-gated execution)
-- [ ] Configure AWS secret management (SSM Parameter Store standard first; Secrets Manager when needed)
-- [ ] Verify app-to-db connectivity against AWS environment
-- [ ] Add cloud runbook notes (provisioning, rollback, and cost controls)
-
-Execution of Sprint 0.7 is gated by: `docs/infra/cloud-activation-gate.md`.
 
 ---
 
@@ -457,4 +441,3 @@ Execution of Sprint 0.7 is gated by: `docs/infra/cloud-activation-gate.md`.
 - Security/privacy controls are part of the core architecture, not post-hoc.
 - Scope discipline wins over overengineering.
 - Every meaningful implementation includes tests and documentation in the same cycle.
-
