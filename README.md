@@ -24,7 +24,7 @@ Implemented so far:
 - ESLint + Prettier baseline
 - Vitest unit baseline + smoke test
 - Playwright E2E baseline + smoke test
-- GitHub Actions CI checks (lint, typecheck, unit, build, e2e smoke)
+- GitHub Actions CI checks (lint, typecheck, unit, build, e2e smoke, docker build validation)
 
 Not implemented yet (beyond tooling baseline):
 
@@ -200,6 +200,11 @@ Containerization planning references:
 
 - roadmap item: [docs/roadmap.md](docs/roadmap.md) (`Sprint 0.3: Containerization Baseline`)
 - sprint execution doc: [docs/sprints/sprint-0.3.md](docs/sprints/sprint-0.3.md)
+
+CI Docker gate purpose (`Sprint 0.3 / Task 7`):
+
+- CI runs a build-only `docker build` validation job on `push` and `pull_request`.
+- This catches Dockerfile/runtime packaging regressions early without pushing images to any registry.
 
 ## Secret Hygiene
 

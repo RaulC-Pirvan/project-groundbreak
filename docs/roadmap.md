@@ -99,8 +99,8 @@ Cloud activation gate policy: `docs/infra/cloud-activation-gate.md`
   - [x] postgres (dev-only local DB option)
 - [x] Add `.dockerignore` and image-size optimization pass
 - [x] Add local run scripts (`docker compose up/down/logs`)
-- [ ] Document Docker workflows and troubleshooting notes in README
-- [ ] Add image build step in CI
+- [x] Document Docker workflows and troubleshooting notes in README
+- [x] Add image build step in CI
 
 ---
 

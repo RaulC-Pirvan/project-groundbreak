@@ -177,7 +177,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add image build step in CI
+- [x] Add image build step in CI
 
 Step-by-step:
 
