@@ -134,7 +134,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure local secret workflow (`.env` + validation + no repo secrets)
+- [x] Configure local secret workflow (`.env` + validation + no repo secrets)
 
 Step-by-step:
 

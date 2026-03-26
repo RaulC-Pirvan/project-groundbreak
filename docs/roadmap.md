@@ -81,7 +81,7 @@
 - [x] Define environment strategy baseline (`dev`, `test`, `prod`)
 - [x] Configure local PostgreSQL for development (Docker profile)
 - [x] Configure Prisma + initial migration workflow
-- [ ] Configure local secret workflow (`.env` + validation + no repo secrets)
+- [x] Configure local secret workflow (`.env` + validation + no repo secrets)
 - [ ] Verify app-to-db connectivity in development environment
 - [ ] Add db health check path
 - [ ] Document deferred cloud activation criteria and cost gate

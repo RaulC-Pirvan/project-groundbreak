@@ -81,6 +81,7 @@ git clone <YOUR_GIT_REMOTE_URL>
 cd project-groundbreak
 npm ci
 npm run prepare
+copy .env.example .env
 ```
 
 ### Run app locally
@@ -92,6 +93,11 @@ npm run dev
 Expected local URL:
 
 - `http://localhost:3000`
+
+Required runtime variables are validated at startup and test runtime:
+
+- `APP_ENV` (`dev` | `test` | `prod`)
+- `DATABASE_URL` (PostgreSQL connection string)
 
 ### Local PostgreSQL (Docker)
 
@@ -119,6 +125,14 @@ Stop local PostgreSQL:
 ```bash
 docker compose down
 ```
+
+## Secret Hygiene
+
+- Never commit `.env` or any secret-bearing file.
+- Keep `.env.example` non-sensitive and use placeholders only.
+- Rotate local passwords before any shared/demo environment use.
+- Do not hardcode credentials or tokens in source code, tests, or docs.
+- Runtime env validation fails fast when required keys are missing or invalid.
 
 Prisma local connection string (`.env`, local only):
 
