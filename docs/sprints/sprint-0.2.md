@@ -61,7 +61,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure local PostgreSQL for development (Docker profile)
+- [x] Configure local PostgreSQL for development (Docker profile)
 
 Step-by-step:
 
@@ -92,7 +92,7 @@ Done when:
 
 Checklist:
 
-- [ ] Configure Prisma + initial migration workflow
+- [x] Configure Prisma + initial migration workflow
 
 Step-by-step:
 

@@ -72,6 +72,7 @@ Locked baseline:
 - Git
 - Node.js 20+ (recommended)
 - npm 10+ (recommended)
+- Docker Desktop (for local PostgreSQL)
 
 ### Repository setup
 
@@ -92,6 +93,39 @@ Expected local URL:
 
 - `http://localhost:3000`
 
+### Local PostgreSQL (Docker)
+
+Baseline PostgreSQL environment variables used by `docker-compose.yml`:
+
+- `POSTGRES_DB` (default: `groundbreak_dev`)
+- `POSTGRES_USER` (default: `groundbreak`)
+- `POSTGRES_PASSWORD` (default: `change_me_local_only`)
+- `POSTGRES_PORT` (default: `5432`)
+
+Start local PostgreSQL:
+
+```bash
+docker compose up -d postgres
+```
+
+View PostgreSQL logs:
+
+```bash
+docker compose logs -f postgres
+```
+
+Stop local PostgreSQL:
+
+```bash
+docker compose down
+```
+
+Prisma local connection string (`.env`, local only):
+
+```bash
+DATABASE_URL="postgresql://groundbreak:change_me_local_only@localhost:5432/groundbreak_dev?schema=public"
+```
+
 ## Common Commands
 
 Core development commands:
@@ -108,6 +142,14 @@ Build command:
 
 ```bash
 npm run build
+```
+
+Database/Prisma commands:
+
+```bash
+npm run db:generate
+npm run db:migrate -- --name <migration_name>
+npm run db:studio
 ```
 
 ## Troubleshooting
