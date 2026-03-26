@@ -80,9 +80,9 @@ Done when:
 
 Checklist:
 
-- [ ] Add local services profile for:
-  - [ ] app
-  - [ ] postgres (dev-only local DB option)
+- [x] Add local services profile for:
+  - [x] app
+  - [x] postgres (dev-only local DB option)
 
 Step-by-step:
 

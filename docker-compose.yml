@@ -2,6 +2,7 @@ name: project-groundbreak
 
 services:
   app:
+    profiles: ["app"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,6 +18,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+        required: false
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/ >/dev/null || exit 1"]
       interval: 20s
@@ -25,6 +27,8 @@ services:
       start_period: 20s
 
   postgres:
+    # Dev-only local database option. Do not use this container service for production.
+    profiles: ["postgres"]
     image: postgres:16-alpine
     container_name: groundbreak-postgres
     restart: unless-stopped

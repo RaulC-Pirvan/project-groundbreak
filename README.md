@@ -126,6 +126,26 @@ Stop local PostgreSQL:
 docker compose down
 ```
 
+Compose profile matrix (`Sprint 0.3` baseline):
+
+- `postgres` profile (`db-only`, dev-only local DB option):
+
+```bash
+docker compose --profile postgres up -d postgres
+```
+
+- `app` profile (`app-only`, requires external DB via `APP_DATABASE_URL` in `.env`):
+
+```bash
+docker compose --profile app up -d app
+```
+
+- `app` + `postgres` profiles (local full-stack baseline):
+
+```bash
+docker compose --profile app --profile postgres up -d
+```
+
 ## Secret Hygiene
 
 - Never commit `.env` or any secret-bearing file.
