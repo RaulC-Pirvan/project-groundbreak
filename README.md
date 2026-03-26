@@ -146,6 +146,14 @@ docker compose --profile app up -d app
 docker compose --profile app --profile postgres up -d
 ```
 
+Docker image optimization notes (`Sprint 0.3 / Task 4`):
+
+- `.dockerignore` excludes local-only and non-runtime files (`.git`, test outputs, docs, local env files, caches) from build context.
+- Next.js uses `output: "standalone"` so runtime image ships only traced production dependencies.
+- Runtime image does not run `npm ci`; it copies standalone build output instead.
+- Runtime env fail-fast checks are preserved through `scripts/validate-runtime-env.mjs` before server startup.
+- Trade-off: runtime env validation exists in both TypeScript (`src/config/env.ts`) and a lightweight container startup script, which requires keeping validation rules aligned.
+
 ## Secret Hygiene
 
 - Never commit `.env` or any secret-bearing file.

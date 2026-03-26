@@ -104,7 +104,7 @@ Done when:
 
 Checklist:
 
-- [ ] Add `.dockerignore` and image-size optimization pass
+- [x] Add `.dockerignore` and image-size optimization pass
 
 Step-by-step:
 
