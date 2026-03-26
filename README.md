@@ -161,10 +161,19 @@ npm run build
 Database/Prisma commands:
 
 ```bash
+npm run db:check
 npm run db:generate
 npm run db:migrate -- --name <migration_name>
 npm run db:studio
 ```
+
+Manual DB connectivity verification:
+
+```bash
+npm run db:check
+```
+
+The command uses Prisma to run a `SELECT 1` probe and prints actionable failure hints when connectivity fails.
 
 ## Troubleshooting
 
@@ -203,6 +212,24 @@ npm run prepare
 ```
 
 This re-patches the Husky runner for Windows shell compatibility.
+
+- If `npm run db:check` fails with connectivity errors:
+
+```bash
+docker compose up -d postgres
+docker compose ps
+docker compose logs -f postgres
+```
+
+- If `npm run db:check` fails with authentication errors:
+  - Verify `DATABASE_URL` in `.env`.
+  - Verify `POSTGRES_USER` / `POSTGRES_PASSWORD` used by Docker.
+  - Restart postgres after updating credentials.
+
+- If `npm run db:check` reports database/server unreachable:
+  - Ensure PostgreSQL is running on port `5432`.
+  - Check for local port conflicts on `5432`.
+  - Confirm migrations are applied (`npm run db:migrate -- --name <migration_name>`).
 
 ## Contribution Workflow
 

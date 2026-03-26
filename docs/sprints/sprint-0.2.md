@@ -158,7 +158,7 @@ Done when:
 
 Checklist:
 
-- [ ] Verify app-to-db connectivity in development environment
+- [x] Verify app-to-db connectivity in development environment
 
 Step-by-step:
 

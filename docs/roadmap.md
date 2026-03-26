@@ -82,7 +82,7 @@
 - [x] Configure local PostgreSQL for development (Docker profile)
 - [x] Configure Prisma + initial migration workflow
 - [x] Configure local secret workflow (`.env` + validation + no repo secrets)
-- [ ] Verify app-to-db connectivity in development environment
+- [x] Verify app-to-db connectivity in development environment
 - [ ] Add db health check path
 - [ ] Document deferred cloud activation criteria and cost gate
 

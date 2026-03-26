@@ -19,12 +19,15 @@
     "check:ci-local": "npm run lint && npm run typecheck && npm run test && npm run test:e2e",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
+    "db:check": "node scripts/db-check.mjs",
     "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "dotenv": "^17.3.1",
     "next": "16.2.1",
+    "pg": "^8.20.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "zod": "^4.3.6"
