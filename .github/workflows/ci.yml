@@ -13,6 +13,10 @@ on:
 permissions:
   contents: read
 
+env:
+  APP_ENV: test
+  DATABASE_URL: postgresql://groundbreak:change_me_local_only@localhost:5432/groundbreak_test?schema=public
+
 jobs:
   lint:
     name: lint

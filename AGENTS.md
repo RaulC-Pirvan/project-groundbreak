@@ -43,6 +43,29 @@ These are **not the same thing** and must never be conflated in the architecture
 
 ---
 
+## Current Implementation Status (as of 2026-03-26)
+
+- Roadmap phase: `Phase 0` (Engineering + DevOps Foundation)
+- Sprint status in repository artifacts:
+  - Sprint `0.0` governance baseline: completed
+  - Sprint `0.1` tooling baseline: completed (Tasks 1-11)
+  - Sprint `0.2` AWS + database foundation: next execution target
+- Implemented baseline in code:
+  - Next.js App Router scaffold with TypeScript strict mode
+  - Tailwind CSS, ESLint, and Prettier configured
+  - Vitest unit smoke test and Playwright E2E smoke test in place
+  - GitHub Actions CI workflow with lint, typecheck, unit tests, build, and E2E smoke jobs
+  - npm-only package/lockfile policy documented and enforced
+  - Husky local hooks (`pre-commit`, `pre-push`) with `lint-staged` and CI-equivalent local checks
+- Not implemented yet (by design at this stage):
+  - core backend/API product features
+  - ingestion pipeline
+  - scoring/fusion pipeline
+  - authentication and voting flows
+  - database schema/migrations
+
+---
+
 ## Locked Planning Decisions (as of 2026-03-24)
 
 This section records planning decisions already agreed with the project owner.
@@ -187,7 +210,7 @@ Treat these as the current baseline until explicitly revised.
   - avoid introducing major new features during final stabilization and dissertation-writeup windows; focus on reliability, evaluation evidence, and documentation quality.
 - Sprint output requirement: each sprint must produce implementation, tests, and documentation updates in the same cycle.
 - Progress governance: maintain an actively prioritized backlog with MoSCoW-style scope control (`Must`, `Should`, `Could`, `Won't-now`) to prevent dissertation-risking scope creep.
-- Immediate next planning action: produce Sprint 0 and Sprint 1 task breakdown with concrete tickets, dependencies, and acceptance criteria.
+- Immediate next execution action: begin Sprint 0.2 (AWS environment strategy, IAM baseline, RDS provisioning path, Prisma workflow, secrets setup, and db connectivity validation) with tests/docs updated in the same cycle.
 
 ---
 
